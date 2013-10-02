@@ -1,11 +1,26 @@
 from ttapi import Bot
 
-f = open('.ttc','r')
+f = open('.ttrc','r')
 
+config = {}
 for line in f:
-	config[line.split(1)] = line.split(3)
+        str_list = line.split()
+	config[str_list[0]] = str_list[2]
 
-bot = Bot(config[auth],config[userid])
+bot = Bot(config['auth'],config['userid'])
+
+def speak(data):
+   name = data['name']
+   text = data['text']
+   if name == config['mod']:
+	if text == '/surtup':
+		surt.addDj()
+	elif text == '/surtdown':
+		surt.remDj()	
+	elif text == '/surtskip':
+                surt.skip() 
+        elif text == "You're a bit mindless aren't you?":
+		surt.speak('Yes leader!')
 
 def roomChanged(data):
 	room = data['room']
@@ -17,7 +32,7 @@ def roomChanged(data):
 		bot.remDj()
 
 bot.on('roomChanged', roomChanged)
+bot.on('speak', speak)
 
-
-bot.connect(config[roomid])
-bot.start
+bot.connect(config['roomid'])
+bot.start()
