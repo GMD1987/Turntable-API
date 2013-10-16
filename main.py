@@ -30,6 +30,8 @@ def roomChanged(data):
 		bot.addDj()
 	else:
 		bot.remDj()
+        print room
+
 
 bot.on('roomChanged', roomChanged)
 bot.on('speak', speak)
