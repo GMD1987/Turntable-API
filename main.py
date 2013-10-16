@@ -14,13 +14,13 @@ def speak(data):
    text = data['text']
    if name == config['mod']:
 	if text == '/surtup':
-		surt.addDj()
+           surt.addDj()
 	elif text == '/surtdown':
-		surt.remDj()	
+	   surt.remDj()	
 	elif text == '/surtskip':
-                surt.skip() 
+           surt.skip() 
         elif text == "You're a bit mindless aren't you?":
-		surt.speak('Yes leader!')
+           surt.speak('Yes leader!')
 
 def roomChanged(data):
 	room = data['room']
